@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Loading...</title>
+    </head>
+    <body>
+        <a onclick=replaceURL() href='{{ vuln_url }}'>Continue...</a>
+        <script src="jquery-3.2.1.min.js"></script>
+        <script>
+            function replaceURL(){
+                history.replaceState({page: 1}, "Exploit", "index2.html");
+                location.replace('/index2.html');
+            }
+        </script>
+    </body>
+</html>
